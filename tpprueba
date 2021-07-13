@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+typedef struct
+{
+    int id_pelicula;
+    char nom_pelicula [60];
+}Peli;
+
+typedef struct
+{
+	int id_pelicula;
+	int dia;
+	int visualizaciones;
+	float valoraciones;
+}Diass;
+
+int main()
+{
+
+    Peli peli [100];
+	FILE *datos_7dias, *peliculas;
+	peliculas = fopen("peliculas.txt","r");
+	int k,j,p,i, lineas;
+	char saltodelinea;
+	while(!feof(peliculas))
+  {
+
+    for (p=0; p<100; p++){
+        fscanf(peliculas, "%d %s", &peli[p].id_pelicula, peli[p].nom_pelicula);
+    }
+  }
+	fclose(peliculas);
+
+  datos_7dias = fopen("datos_7dias.txt","r");
+  i = 0;
+  lineas=1;
+
+	while(!feof(datos_7dias))
+  {
+      saltodelinea=fgetc(datos_7dias);
+      if (saltodelinea=='\n'){
+        lineas++;
+      }
+      };
+      Diass dias [lineas];
+    k=lineas;
+
+
+    while (!feof(datos_7dias)) {
+    for(i=1;i<k;i++){
+    fscanf(datos_7dias, "%d %d %d %f", &dias[i].id_pelicula, &dias[i].dia, &dias[i].visualizaciones, &dias[i].valoraciones);
+};
+    };
+    fclose(datos_7dias);
+for (i=0;i<k;i++){
+
+printf("%d %d %d %f\n", dias[i].id_pelicula, dias[i].dia, dias[i].visualizaciones, dias[i].valoraciones);
+
+
+};
+printf("La cantidad de lineas es: %d", lineas);
+getch();
+return 0;
+  }
